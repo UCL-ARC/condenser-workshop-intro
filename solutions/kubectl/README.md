@@ -1,4 +1,4 @@
-# Deploying with kubectl
+# Deploying with `kubectl`
 
 ``` sh
 git clone git@github.com:UCL-ARC/condenser-workshop-20260311.git
