@@ -23,4 +23,4 @@ By the end of the workshop, learners will...
 
 - [Terraform](https://developer.hashicorp.com/terraform/install)
 - [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl)
-- An SSH client that can use certificates. Most modern operating systems, including Windows, are equipped with an SSH client.
+- An SSH client that can use certificates. Most modern operating systems, including Windows, are equipped with a suitable SSH client.
