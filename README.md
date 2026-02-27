@@ -9,7 +9,7 @@ By the end of the workshop, learners will...
 
 - Have created deployments of virtual infrastructure on the Condenser platform
 - Have modified and administered their own virtual resources
-- Be equipped with a re-usable pattern for a simple deployment
+- Be equipped with a re-usable pattern for a VM deployment
 - Be informed on how to learn more about the platform and how to apply for resources to create further projects
 
 ## Prerequisites
