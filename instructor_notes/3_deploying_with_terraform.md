@@ -14,6 +14,6 @@
 
 ### Demonstrate drift
 
-### Destroy resources
-
 ### Back up deployment yaml files for the kubectl section
+
+### Destroy resources
