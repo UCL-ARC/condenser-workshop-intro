@@ -9,7 +9,29 @@
 
 ### Apply this deployment
 
+We can apply this deployment as-is. Lets do so now:
+
+``` sh
+terraform validate
+terraform apply
+> yes
+```
+
+We can monitor the VM from the Harvester GUI. If we're quick, we can watch some of the boot process from the serial console.
+
+However, this VM is not configured with a GUI of its own, nor is it configured for SSH access. So we have no way to log in and configure it to do anything. Lets destroy this VM and configure the deployment to provide SSH access.
+
+``` sh
+terraform destroy
+```
+
 ## Configure a VM for SSH access
+
+Log in to the VM:
+
+``` sh
+ssh -J condenser -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null almalinux@<IP ADDRESS>
+```
 
 > [!WARNING]
 > The cloud-init user data in this module is transmitted in plain text with no encryption. In general, do not use cloud-init user data to provision a VM with secrets. `insert advice about what to do instead, probably vault or ansible. we could do a whole other workshop about secrets on Condenser.`

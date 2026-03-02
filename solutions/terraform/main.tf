@@ -31,6 +31,26 @@ resource "harvester_virtualmachine" "vm" {
   }
 
   network_interface {
-    name = "default"
+    name           = "nic-1"
+    wait_for_lease = true
+    type           = "bridge"
+    network_name   = var.network_name
   }
+
+  cloudinit {
+    user_data = <<EOF
+#cloud-config
+package_update: true
+packages:
+  - qemu-guest-agent
+runcmd:
+  - - systemctl
+    - enable
+    - --now
+    - qemu-guest-agent.service
+ssh_authorized_keys:
+  - ${var.ssh_public_key_data}
+EOF
+  }
+
 }
