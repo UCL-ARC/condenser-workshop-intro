@@ -117,7 +117,6 @@ terraform destroy
 
 ## Configure a VM for SSH access
 
-
 You can use a `tfvars` file to record variable values. Create a new file named `terraform.tfvars` and populate it with the following data:
 
 ``` hcl
