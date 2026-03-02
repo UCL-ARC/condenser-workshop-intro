@@ -3,7 +3,7 @@ Material for Introduction to Condenser workshop on 20260311
 
 ## Goals of the workshop
 
-This workshop is designed for RSEs and Data Stewards with experience installing, configuring, or administering reseach software on Linux systems.
+This workshop is designed for ARC RIDs, RSEs, and Data Stewards with experience installing, configuring, or administering reseach software on Linux systems.
 
 By the end of the workshop, learners will...
 
