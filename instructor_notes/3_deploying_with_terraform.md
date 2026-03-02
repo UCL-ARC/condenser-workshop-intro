@@ -27,6 +27,9 @@ terraform destroy
 
 ## Configure a VM for SSH access
 
+> [!NOTE]
+> The `network_name` in the `network_interface` block is an ID with the form `NAMESPACE/NAME`. It's a bit of a misnomer.
+
 Log in to the VM:
 
 ``` sh
