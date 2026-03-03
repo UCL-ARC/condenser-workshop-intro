@@ -15,9 +15,9 @@ By the end of the workshop, learners will...
 
 ## Prerequisites
 
-This workshop will consist of practical demonstrations of managing deployments of virtual infrastructure through a web GUI, the command line, and by connecting to remote servers with SSH. It is intended that learners will follow the workshop from their own workstations, either remotely over Teams or in-person.
+This workshop will consist of practical demonstrations of managing deployments of virtual infrastructure through a web GUI, the command line, and by connecting to remote servers with SSH. It is intended that learners will follow along with the workshop from their own workstations, either remotely over Teams or in-person.
 
-Learners with Linux and MacOS computers can use their native command line applications. Learners with Windows computers can use a linux environment such as WSL or an IDE with a command line function such as Visual Studio Code.
+Learners with Linux and MacOS computers can use their native command line applications. Learners with Windows computers can use a linux environment such as WSL or an IDE with a linux command line function such as Visual Studio Code.
 
 ### Knowledge/experience
 
