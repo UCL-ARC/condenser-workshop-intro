@@ -70,7 +70,7 @@ resource "harvester_virtualmachine" "vm" {
 
   # A required parameter; the name of the first network interface
   network_interface {
-    name           = "default"
+    name           = "eth0"
   }
 }
 ```
@@ -139,7 +139,7 @@ Edit the `main.tf` file. Replace the `network_interface` block with the followin
 
 ``` hcl
   network_interface {
-    name           = "nic-1"
+    name           = "eth0"
     wait_for_lease = true
     type           = "bridge"
     network_name   = var.network_name
@@ -164,6 +164,8 @@ runcmd:
     - qemu-guest-agent.service
 ssh_authorized_keys:
   - ${var.ssh_public_key_data}
+power_state:
+  mode: reboot
 EOF
   }
 ```
@@ -233,6 +235,44 @@ terraform destroy
 ## Configure a VM for web ingress
 
 We are going to configure the deployment to serve a website.
+
+First we will configure cloudinit to start a simple web server.
+
+Add `httpd` to the package installation list:
+
+``` yaml
+  - httpd
+```
+
+Then instruct the VM to enable the service:
+
+``` yaml
+  - - systemctl
+    - enable
+    - --now
+    - httpd
+```
+
+Then we need to add labels to the VM. Condenser has an ingress service which will look for these labels in projects with web ingress enabled.
+
+Add this block to the `harvester_virtualmachine.vm` resource:
+
+``` hcl
+labels = {
+    "condenser.ingress/isEnabled"      = true
+    "condenser.ingress.demo/hostname"  = var.name
+  }
+```
+
+Deploy the configuration:
+
+``` sh
+terraform validate
+terraform apply
+> yes
+```
+
+Wait a few minutes, then check `https://<NAME>.<WORKSHOP PROJECT>.condenser.arc.ucl.ac.uk`.
 
 ## Using Terraform to enforce state
 
