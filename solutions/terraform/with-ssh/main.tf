@@ -48,6 +48,8 @@ runcmd:
     - enable
     - --now
     - qemu-guest-agent.service
+power_state:
+  mode: reboot
 ssh_authorized_keys:
   - ${var.ssh_public_key_data}
 EOF
