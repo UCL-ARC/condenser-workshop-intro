@@ -1,10 +1,5 @@
 # Deploying with Terraform
 
-## Obtain a kubeconfig file
-
-> [!WARNING]
-> Your kubeconfig file contains a secret token that uses your credentials to authenticate to the Harvester cluster. Do not share it with anyone. If your kubeconfig file is compromised, revoke the key from the [Account and API Keys](https://rancher.condenser.arc.ucl.ac.uk/dashboard/account) page in Rancher.
-
 ## Write a terraform module
 
 Create a new, empty directory and three empty files:
@@ -94,9 +89,30 @@ variable "namespace" {
 }
 ```
 
+We can apply this deployment as-is. But first we need a kubeconfig file to authenticate to the cluster.
+
+### Obtain a kubeconfig file
+
+We are going to download our kubeconfig file, which Harvester requires to connect to the `sl-p02` cluster in Condenser.
+
+To do so, return to the [Rancher GUI](rancher.condenser.arc.ucl.ac.uk/) in your web browser. Using the menu at left, go to **Virtualization Management**, and tick the box next to the cluster you need to authenticate to. For this workshop, we need `sl-p02`. Then click on **Download KubeConfig**. Take note of the location that your browser downloads the file to. Use your favorite method to move it to a handy location, such as the directory you've been working in.
+
+``` sh
+mv ~/Downloads/sl-p02.yaml .
+```
+
+For simplicity, we are going to use an environment variable to configure the Harvester terraform provider to use this kubeconfig file.
+
+``` sh
+export KUBECONFIG=$PWD/sl-p02.yaml
+```
+
+> [!WARNING]
+> Your kubeconfig file contains a secret token that uses your credentials to authenticate to the Harvester cluster. Do not share it with anyone. If your kubeconfig file is compromised, delete the key from the [Account and API Keys](https://rancher.condenser.arc.ucl.ac.uk/dashboard/account) page in Rancher.
+
 ### Apply this deployment
 
-We can apply this deployment as-is. Lets do so now:
+Now run `terraform apply`:
 
 ``` sh
 terraform validate
@@ -108,7 +124,7 @@ You will be prompted for a name for the VM and the namespace to deploy it in.
 
 We can monitor the VM from the Harvester GUI. If we're quick, we can watch some of the boot process from the serial console.
 
-However, this VM is not configured with a GUI of its own, nor is it configured for SSH access. So we have no way to log in and configure it to do anything. Lets destroy this VM and configure the deployment to provide SSH access.
+However, this VM is not configured to expose a GUI of its own, nor is it configured for SSH access. So we have no way to log in and configure it to do anything. Lets destroy this VM and configure the deployment to provide SSH access.
 
 ``` sh
 terraform destroy
@@ -117,10 +133,71 @@ terraform destroy
 
 ## Configure a VM for SSH access
 
-You can use a `tfvars` file to record variable values. Create a new file named `terraform.tfvars` and populate it with the following data:
+We will configure the VM to use a VLAN network and register an SSH public key.
+
+Edit the `main.tf` file. Replace the `network_interface` block with the following configuration:
 
 ``` hcl
-name                = "<UNIQUE NAME>"
+  network_interface {
+    name           = "nic-1"
+    wait_for_lease = true
+    type           = "bridge"
+    network_name   = var.network_name
+  }
+```
+
+This will enable the VM to use a pre-configured VLAN network.
+
+Then insert this block to the `harvester_virtualmachine.vm` resource:
+
+``` hcl
+  cloudinit {
+    user_data = <<EOF
+#cloud-config
+package_update: true
+packages:
+  - qemu-guest-agent
+runcmd:
+  - - systemctl
+    - enable
+    - --now
+    - qemu-guest-agent.service
+ssh_authorized_keys:
+  - ${var.ssh_public_key_data}
+EOF
+  }
+```
+
+The `cloudinit` block contains instructions that will configure the VM when it is launched.
+
+Save the file. Then edit the `variables.tf` file; add two more variables:
+
+``` hcl
+variable "network_name" {
+  type        = string
+  description = "Name of a network in the namespace"
+}
+
+variable "ssh_public_key_data" {
+  type        = string
+  description = "SSH public key data"
+}
+```
+
+Save the file, then edit the `output.tf` file and add this block:
+
+``` hcl
+output "ip_address" {
+  value = harvester_virtualmachine.vm.network_interface[0].ip_address
+}
+```
+
+The VM will be assigned an IP address by DHCP. This output will retrieve that IP address.
+
+Before we apply, we can use a `tfvars` file to record variable values instead of entering them when prompted. Create a new file named `terraform.tfvars` and populate it with the following data:
+
+``` hcl
+name                = "<UNIQUE VM NAME>"
 namespace           = "<WORKSHOP NAMESPACE>"
 network_name        = "<WORKSHOP NAMESPACE>/default"
 ssh_public_key_data = "<SSH PUBLIC KEY DATA>"
