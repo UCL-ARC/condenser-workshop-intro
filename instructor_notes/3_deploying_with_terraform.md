@@ -232,6 +232,8 @@ terraform destroy
 
 ## Configure a VM for web ingress
 
+We are going to configure the deployment to serve a website.
+
 ## Using Terraform to enforce state
 
 ### Demonstrate drift
