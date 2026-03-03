@@ -31,7 +31,7 @@ resource "harvester_virtualmachine" "vm" {
   }
 
   network_interface {
-    name           = "nic-1"
+    name           = "eth0"
     wait_for_lease = true
     type           = "bridge"
     network_name   = var.network_name

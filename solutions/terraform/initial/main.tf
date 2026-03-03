@@ -31,7 +31,7 @@ resource "harvester_virtualmachine" "vm" {
   }
 
   network_interface {
-    name = "default"
+    name = "eth0"
   }
 
 }
