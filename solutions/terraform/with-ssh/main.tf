@@ -4,7 +4,7 @@ data "harvester_image" "img" {
 }
 
 resource "harvester_virtualmachine" "vm" {
-  name        = var.name
+  name        = var.vm_name
   namespace   = var.namespace
   description = "Demo VM"
   hostname    = "demo"

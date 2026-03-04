@@ -40,7 +40,7 @@ Next add a block that describes the VM:
 
 ``` hcl
 resource "harvester_virtualmachine" "vm" {
-  name        = var.name      # name of the VM resources in Harvester
+  name        = var.vm_name   # name of the VM resources in Harvester
   namespace   = var.namespace # namespace that the VM will be deployed in
   description = "Demo VM"
   hostname    = "demo"
@@ -78,7 +78,7 @@ resource "harvester_virtualmachine" "vm" {
 Save this file. Finally, edit the `variables.tf` file. Here we will set up variables for the name of the VM and the namespace it should be deployed in.
 
 ``` hcl
-variable "name" {
+variable "vm_name" {
   type        = string
   description = "Name of the VM"
 }
@@ -199,7 +199,7 @@ The VM will be assigned an IP address by DHCP. This output will retrieve that IP
 Before we apply, we can use a `tfvars` file to record variable values instead of entering them when prompted. Create a new file named `terraform.tfvars` and populate it with the following data:
 
 ``` hcl
-name                = "<UNIQUE VM NAME>"
+vm_name                = "<UNIQUE VM NAME>"
 namespace           = "<WORKSHOP NAMESPACE>"
 network_name        = "<WORKSHOP NAMESPACE>/default"
 ssh_public_key_data = "<SSH PUBLIC KEY DATA>"
@@ -260,7 +260,7 @@ Add this block to the `harvester_virtualmachine.vm` resource:
 ``` hcl
 labels = {
     "condenser.ingress/isEnabled"      = true
-    "condenser.ingress.demo/hostname"  = var.name
+    "condenser.ingress.demo/hostname"  = var.vm_name
   }
 ```
 
@@ -272,7 +272,7 @@ terraform apply
 > yes
 ```
 
-Wait a few minutes, then check `https://<NAME>.<WORKSHOP PROJECT>.condenser.arc.ucl.ac.uk`.
+Wait a few minutes, then check `https://<VM NAME>.<WORKSHOP PROJECT>.condenser.arc.ucl.ac.uk`.
 
 ## Using Terraform to enforce state
 
@@ -295,7 +295,7 @@ Lastly, we will demonstrate that some changes can be unintentionally destructive
 Finally, we are going to prepare for the next section by backing up the yaml files associated with this VM. Return to the [Rancher GUI](rancher.condenser.arc.ucl.ac.uk/) and navigate to your virtual machine. From the rain menu in the upper right select **Download YAML**, and note the location where your browser downloads the file to. Use your favorite method to move it to a convenient location and re-name it to `webserver.yaml`.
 
 ``` sh
-mv ~/Downloads/<NAME>.yaml ./webserver.yaml
+mv ~/Downloads/<VM NAME>.yaml ./webserver.yaml
 ```
 
 ## Destroy resources
