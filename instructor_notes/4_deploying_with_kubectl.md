@@ -15,7 +15,7 @@ export KUBECONFIG=$PWD/sl-p02.yaml
 Then apply the configuration:
 
 ``` sh
-kubectl apply -f <NAME>.yaml
+kubectl apply -f webserver.yaml
 ```
 
 ...and note that your webserver VM comes back up.
@@ -47,5 +47,5 @@ kubectl --namespace=<WORKSHOP NAMESPACE> edit vm <NAME>
 ## Destroy the deployment
 
 ``` sh
-kubectl delete -f <NAME>.yaml
+kubectl delete -f webserver.yaml
 ```
