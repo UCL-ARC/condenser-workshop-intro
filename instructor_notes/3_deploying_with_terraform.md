@@ -292,7 +292,7 @@ Lastly, we will demonstrate that some changes can be unintentionally destructive
 
 ## Back up deployment yaml files for the kubectl section
 
-Finally, we are going to prepare for the next section by backing up the yaml files associated with this VM. Return to the [Rancher GUI](rancher.condenser.arc.ucl.ac.uk/) and navigate to your virtual machine. From the rain menu in the upper right select **Download YAML**, and note the location where your browser downloads the file to. Use your favorite method to move it to a convenient location.
+Finally, we are going to prepare for the next section by backing up the yaml files associated with this VM. Return to the [Rancher GUI](rancher.condenser.arc.ucl.ac.uk/) and navigate to your virtual machine. From the rain menu in the upper right select **Download YAML**, and note the location where your browser downloads the file to. Use your favorite method to move it to a convenient location and re-name it to `webserver.yaml`.
 
 ``` sh
 mv ~/Downloads/<NAME>.yaml ./webserver.yaml
