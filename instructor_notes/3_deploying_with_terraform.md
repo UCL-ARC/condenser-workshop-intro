@@ -244,7 +244,7 @@ Add `httpd` to the package installation list:
   - httpd
 ```
 
-Then instruct the VM to enable the service:
+Then add a command to enable the service:
 
 ``` yaml
   - - systemctl
@@ -276,11 +276,36 @@ Wait a few minutes, then check `https://<NAME>.<WORKSHOP PROJECT>.condenser.arc.
 
 ## Using Terraform to enforce state
 
-### Demonstrate drift
+We are going to demonstrate the concept of "drift" and how Terraform can be used to enforce state.
 
-### Back up deployment yaml files for the kubectl section
+Lets return to the [Rancher GUI](rancher.condenser.arc.ucl.ac.uk/) and modify the VM we deployed. We want to temporarily increase the amount of RAM available to the VM.
 
-### Destroy resources
+Navigate to: `Virtualization management > sl-p02 > Virtual Machines`
+
+Click on your VM's name. Use the rain menu in the upper right to **Edit Config**. Increase the RAM and save the changes. Your VM will need to restart for these to take effect.
+
+After the changes are complete, return to the command line and run `terraform plan`. Terraform will detect that there have been changes to the VM and it will give you a plan to enforce the state specified in your deployment. You can then run `terraform apply` to make the planned changes and return the VM to its correct configuration.
+
+If instead you wanted the change to be permanent, you can make the change in your terraform module and then `apply` it. This is a typical workflow for projects where multiple developers need to work on the infrastructure.
+
+Lastly, we will demonstrate that some changes can be unintentionally destructive. Edit your `terraform.tfvars` file and change the name of the VM, then run `terraform plan`. Note that this change will force replacement of the VM.
+
+## Back up deployment yaml files for the kubectl section
+
+Finally, we are going to prepare for the next section by backing up the yaml files associated with this VM. Return to the [Rancher GUI](rancher.condenser.arc.ucl.ac.uk/) and navigate to your virtual machine. From the rain menu in the upper right select **Download YAML**, and note the location where your browser downloads the file to. Use your favorite method to move it to a convenient location.
+
+``` sh
+mv ~/Downloads/<NAME>.yaml .
+```
+
+## Destroy resources
+
+Finally, destroy your webserver:
+
+``` sh
+terraform destroy
+> yes
+```
 
 > [!WARNING]
 > By default, Terraform state files are stored in plain text with no encryption. If you retrieve a secret from elsewhere and then use it in the module, it may be recorded in the state file. Hashicorp has written advice for [managing sensitive data in your Terraform configuration](https://developer.hashicorp.com/terraform/language/manage-sensitive-data).
