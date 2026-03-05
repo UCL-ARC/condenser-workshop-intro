@@ -6,7 +6,7 @@ In particular, we run Rancher and Harvester to govern access to the platform and
 
 ## Logging in to the Rancher/Harvester GUI
 
-Log in to the platform at https://rancher.condenser.ucl.ac.uk.
+Log in to the platform at <https://rancher.condenser.ucl.ac.uk>.
 
 Rancher governs access to the platform and controls your role and the permissions you have. But the dashboard is not very informative for our purposes. Click on **Virtualization Management** to see a list of clusters that you have access to.
 
