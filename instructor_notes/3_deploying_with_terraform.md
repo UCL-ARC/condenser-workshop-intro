@@ -95,7 +95,7 @@ We can apply this deployment as-is. But first we need a kubeconfig file to authe
 
 We are going to download our kubeconfig file, which Harvester requires to connect to the `sl-p02` cluster in Condenser.
 
-To do so, return to the [Rancher GUI](rancher.condenser.arc.ucl.ac.uk/) in your web browser. Using the menu at left, go to **Virtualization Management**, and tick the box next to the cluster you need to authenticate to. For this workshop, we need `sl-p02`. Then click on **Download KubeConfig**. Take note of the location that your browser downloads the file to. Use your favorite method to move it to a handy location, such as the directory you've been working in.
+To do so, return to the [Rancher GUI](https://rancher.condenser.arc.ucl.ac.uk/) in your web browser. Using the menu at left, go to **Virtualization Management**, and tick the box next to the cluster you need to authenticate to. For this workshop, we need `sl-p02`. Then click on **Download KubeConfig**. Take note of the location that your browser downloads the file to. Use your favorite method to move it to a handy location, such as the directory you've been working in.
 
 ``` sh
 mv ~/Downloads/sl-p02.yaml .
@@ -278,7 +278,7 @@ Wait a few minutes, then check `https://<VM NAME>.<WORKSHOP PROJECT>.condenser.a
 
 We are going to demonstrate the concept of "drift" and how Terraform can be used to enforce state.
 
-Lets return to the [Rancher GUI](rancher.condenser.arc.ucl.ac.uk/) and modify the VM we deployed. We want to temporarily increase the amount of RAM available to the VM.
+Lets return to the [Rancher GUI](https://rancher.condenser.arc.ucl.ac.uk/) and modify the VM we deployed. We want to temporarily increase the amount of RAM available to the VM.
 
 Navigate to: `Virtualization management > sl-p02 > Virtual Machines`
 
