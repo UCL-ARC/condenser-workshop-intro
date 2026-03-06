@@ -194,7 +194,7 @@ variable "ssh_public_key_data" {
 }
 ```
 
-Save the file, then edit the `output.tf` file and add this block:
+Save the file, then create the `outputs.tf` file and add this block:
 
 ``` hcl
 output "ip_address" {
