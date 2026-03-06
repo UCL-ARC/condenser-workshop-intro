@@ -1,0 +1,121 @@
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    field.cattle.io/description: Demo VM
+    harvesterhci.io/reservedMemory: 100Mi
+    harvesterhci.io/vmRunStrategy: RerunOnFailure
+    harvesterhci.io/volumeClaimTemplates: >-
+      [{"metadata":{"name":"<UNIQUE VOLUME NAME>","creationTimestamp":null,"annotations":{"harvesterhci.io/imageId":"harvester-public/image-x5x4r","terraform-provider-harvester-auto-delete":"true"}},"spec":{"accessModes":["ReadWriteMany"],"resources":{"requests":{"storage":"30Gi"}},"storageClassName":"longhorn-image-x5x4r","volumeMode":"Block"},"status":{}}]
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+    network.harvesterhci.io/ips: '[]'
+  finalizers:
+    - kubevirt.io/virtualMachineControllerFinalize
+    - wrangler.cattle.io/VMController.CleanupPVCAndSnapshot
+  labels:
+    harvesterhci.io/creator: harvester
+    harvesterhci.io/os: linux
+  name: <UNIQUE VM NAME>
+  namespace: <WORKSHOP NAMESPACE>
+spec:
+  runStrategy: RerunOnFailure
+  template:
+    metadata:
+      annotations:
+        harvesterhci.io/sshNames: 'null'
+        harvesterhci.io/waitForLeaseInterfaceNames: '["eth0"]'
+      creationTimestamp: null
+      labels:
+        condenser.ingress.demo/hostname: <HOSTNAME>
+        condenser.ingress/isEnabled: 'true'
+        harvesterhci.io/vmName: <UNIQUE VM NAME>
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: network.harvesterhci.io/mgmt
+                    operator: In
+                    values:
+                      - 'true'
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - podAffinityTerm:
+                labelSelector:
+                  matchExpressions:
+                    - key: harvesterhci.io/creator
+                      operator: Exists
+                topologyKey: kubernetes.io/hostname
+              weight: 100
+      architecture: amd64
+      domain:
+        cpu:
+          cores: 2
+          maxSockets: 1
+          sockets: 1
+        devices:
+          disks:
+            - bootOrder: 1
+              disk:
+                bus: virtio
+              name: rootdisk
+            - disk:
+                bus: virtio
+              name: cloudinitdisk
+          interfaces:
+            - bridge: {}
+              model: virtio
+              name: eth0
+        features:
+          acpi: {}
+          smm:
+            enabled: true
+        firmware:
+          bootloader:
+            efi:
+              secureBoot: true
+        machine:
+          type: q35
+        memory:
+          guest: 16284Mi
+        resources:
+          limits:
+            cpu: '2'
+            memory: 16Gi
+          requests:
+            cpu: 125m
+            memory: 10922Mi
+      evictionStrategy: LiveMigrateIfPossible
+      hostname: demo
+      networks:
+        - multus:
+            networkName: <WORKSHOP NAMESPACE>/default
+          name: eth0
+      terminationGracePeriodSeconds: 120
+      volumes:
+        - name: rootdisk
+          persistentVolumeClaim:
+            claimName: <UNIQUE VOLUME NAME>
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              package_update: true
+              packages:
+                - qemu-guest-agent
+                - httpd
+              runcmd:
+                - - systemctl
+                  - enable
+                  - --now
+                  - qemu-guest-agent.service
+                - - systemctl
+                  - enable
+                  - --now
+                  - httpd
+              power_state:
+                mode: reboot
+              ssh_authorized_keys:
+                - <SSH PUBLIC KEY DATA> 
+          name: cloudinitdisk
