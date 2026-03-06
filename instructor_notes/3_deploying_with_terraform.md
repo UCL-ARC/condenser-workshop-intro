@@ -290,7 +290,7 @@ Lets return to the [Rancher GUI](https://rancher.condenser.arc.ucl.ac.uk/) and m
 
 Navigate to: `Virtualization management > sl-p02 > Virtual Machines`
 
-Click on your VM's name. Use the rain menu in the upper right to **Edit Config**. Increase the RAM and save the changes. Your VM will need to restart for these to take effect.
+Click on your VM's name. Use the rain (overflow) menu in the upper right to **Edit Config**. Increase the RAM and save the changes. Your VM will need to restart for these to take effect.
 
 After the changes are complete, return to the command line and run `terraform plan`. Terraform will detect that there have been changes to the VM and it will give you a plan to enforce the state specified in your deployment. You can then run `terraform apply` to make the planned changes and return the VM to its correct configuration.
 
@@ -300,7 +300,7 @@ Lastly, we will demonstrate that some changes can be unintentionally destructive
 
 ## Back up deployment yaml files for the kubectl section
 
-Finally, we are going to prepare for the next section by backing up the yaml files associated with this VM. Return to the [Rancher GUI](rancher.condenser.arc.ucl.ac.uk/) and navigate to your virtual machine. From the rain menu in the upper right select **Download YAML**, and note the location where your browser downloads the file to. Use your favorite method to move it to a convenient location and re-name it to `webserver.yaml`.
+Finally, we are going to prepare for the next section by backing up the yaml files associated with this VM. Return to the [Rancher GUI](rancher.condenser.arc.ucl.ac.uk/) and navigate to your virtual machine. From the rain (overflow) menu in the upper right select **Download YAML**, and note the location where your browser downloads the file to. Use your favorite method to move it to a convenient location and re-name it to `webserver.yaml`.
 
 ``` sh
 mv ~/Downloads/<VM NAME>.yaml ./webserver.yaml
