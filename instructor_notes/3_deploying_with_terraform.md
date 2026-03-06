@@ -10,7 +10,7 @@ cd terraform
 touch main.tf terraform.tf variables.tf
 ```
 
-Edit `terraform.tf` with your favorite text editor. Add the following text:
+Edit `terraform.tf` with your favourite text editor. Add the following text:
 
 ``` hcl
 terraform {
