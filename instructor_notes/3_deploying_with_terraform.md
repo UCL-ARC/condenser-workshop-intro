@@ -128,7 +128,9 @@ terraform apply
 
 You will be prompted for a name for the VM and the namespace to deploy it in. Use the <WORKSHOP NAMESPACE> for the namespace, and any unique name for the VM.
 
-We can monitor the VM from the Harvester GUI. If we're quick, we can watch some of the boot process from the serial console.
+We can monitor the VM from the Harvester GUI. To do this, return to the [Rancher GUI](https://rancher.condenser.arc.ucl.ac.uk/) and navigate to `Virtualization Management > sl-p02 > Virtual Machines`. Click on the name of your VM to view its details. You can see the status of the VM, and if you click on the `Console` dropdown you can view the serial console output.
+
+If we're quick, we can watch some of the boot process from the serial console.
 
 However, this VM is not configured to expose a GUI of its own, nor is it configured for SSH access. So we have no way to log in and configure it to do anything. Lets destroy this VM and configure the deployment to provide SSH access.
 
