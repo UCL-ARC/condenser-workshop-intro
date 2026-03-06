@@ -10,7 +10,7 @@ cd terraform
 touch main.tf terraform.tf variables.tf
 ```
 
-Edit `terraform.tf` with your favorite text editor. Add the following text:
+Edit `terraform.tf` with your favourite text editor. Add the following text:
 
 ``` hcl
 terraform {
@@ -95,7 +95,7 @@ We can apply this deployment as-is. But first we need a kubeconfig file to authe
 
 We are going to download our kubeconfig file, which Harvester requires to connect to the `sl-p02` cluster in Condenser.
 
-To do so, return to the [Rancher GUI](rancher.condenser.arc.ucl.ac.uk/) in your web browser. Using the menu at left, go to **Virtualization Management**, and tick the box next to the cluster you need to authenticate to. For this workshop, we need `sl-p02`. Then click on **Download KubeConfig**. Take note of the location that your browser downloads the file to. Use your favorite method to move it to a handy location, such as the directory you've been working in.
+To do so, return to the [Rancher GUI](https://rancher.condenser.arc.ucl.ac.uk/) in your web browser. Using the menu at left, go to **Virtualization Management**, and tick the box next to the cluster you need to authenticate to. For this workshop, we need `sl-p02`. Then click on **Download KubeConfig**. Take note of the location that your browser downloads the file to. Use your favorite method to move it to a handy location, such as the directory you've been working in.
 
 ``` sh
 mv ~/Downloads/sl-p02.yaml .
@@ -112,7 +112,13 @@ export KUBECONFIG=$PWD/sl-p02.yaml
 
 ### Apply this deployment
 
-Now run `terraform apply`:
+First run `terraform init` to initialise the terraform module and download the Harvester provider:
+
+``` sh
+terraform init
+```
+
+Now run `terraform validate` to check that the configuration is valid, and then `terraform apply` to deploy the VM:
 
 ``` sh
 terraform validate
@@ -120,9 +126,11 @@ terraform apply
 > yes
 ```
 
-You will be prompted for a name for the VM and the namespace to deploy it in.
+You will be prompted for a name for the VM and the namespace to deploy it in. Use the <WORKSHOP NAMESPACE> for the namespace, and any unique name for the VM.
 
-We can monitor the VM from the Harvester GUI. If we're quick, we can watch some of the boot process from the serial console.
+We can monitor the VM from the Harvester GUI. To do this, return to the [Rancher GUI](https://rancher.condenser.arc.ucl.ac.uk/) and navigate to `Virtualization Management > sl-p02 > Virtual Machines`. Click on the name of your VM to view its details. You can see the status of the VM, and if you click on the `Console` dropdown you can view the serial console output.
+
+If we're quick, we can watch some of the boot process from the serial console.
 
 However, this VM is not configured to expose a GUI of its own, nor is it configured for SSH access. So we have no way to log in and configure it to do anything. Lets destroy this VM and configure the deployment to provide SSH access.
 
@@ -186,7 +194,7 @@ variable "ssh_public_key_data" {
 }
 ```
 
-Save the file, then edit the `output.tf` file and add this block:
+Save the file, then create the `outputs.tf` file and add this block:
 
 ``` hcl
 output "ip_address" {
@@ -219,7 +227,7 @@ terraform apply
 > [!WARNING]
 > Note that the cloud-init user data in this module is transmitted in plain text with no encryption. In general, do not use cloud-init user data to provision a VM with secrets. For alternatives, you can use Ansible to configure a VM with secrets, or Vault/OpenBao to use ephemeral secrets in Terraform.
 
-The `ip_address` output will contain the IP address assigned via DHCP. If it is not immediately populated, run `terraform apply` again to retrieve the data from the cluster.
+The `ip_address` output will contain the IP address assigned via DHCP. If it is not immediately populated, run `terraform apply` again to retrieve the data from the cluster (it can take a few minutes for an IP address to be assigned).
 
 Log in to the VM:
 
@@ -278,11 +286,11 @@ Wait a few minutes, then check `https://<VM NAME>.<WORKSHOP PROJECT>.condenser.a
 
 We are going to demonstrate the concept of "drift" and how Terraform can be used to enforce state.
 
-Lets return to the [Rancher GUI](rancher.condenser.arc.ucl.ac.uk/) and modify the VM we deployed. We want to temporarily increase the amount of RAM available to the VM.
+Lets return to the [Rancher GUI](https://rancher.condenser.arc.ucl.ac.uk/) and modify the VM we deployed. We want to temporarily increase the amount of RAM available to the VM.
 
 Navigate to: `Virtualization management > sl-p02 > Virtual Machines`
 
-Click on your VM's name. Use the rain menu in the upper right to **Edit Config**. Increase the RAM and save the changes. Your VM will need to restart for these to take effect.
+Click on your VM's name. Use the rain (overflow) menu in the upper right to **Edit Config**. Increase the RAM and save the changes. Your VM will need to restart for these to take effect.
 
 After the changes are complete, return to the command line and run `terraform plan`. Terraform will detect that there have been changes to the VM and it will give you a plan to enforce the state specified in your deployment. You can then run `terraform apply` to make the planned changes and return the VM to its correct configuration.
 
@@ -292,7 +300,7 @@ Lastly, we will demonstrate that some changes can be unintentionally destructive
 
 ## Back up deployment yaml files for the kubectl section
 
-Finally, we are going to prepare for the next section by backing up the yaml files associated with this VM. Return to the [Rancher GUI](rancher.condenser.arc.ucl.ac.uk/) and navigate to your virtual machine. From the rain menu in the upper right select **Download YAML**, and note the location where your browser downloads the file to. Use your favorite method to move it to a convenient location and re-name it to `webserver.yaml`.
+Finally, we are going to prepare for the next section by backing up the yaml files associated with this VM. Return to the [Rancher GUI](rancher.condenser.arc.ucl.ac.uk/) and navigate to your virtual machine. From the rain (overflow) menu in the upper right select **Download YAML**, and note the location where your browser downloads the file to. Use your favorite method to move it to a convenient location and re-name it to `webserver.yaml`.
 
 ``` sh
 mv ~/Downloads/<VM NAME>.yaml ./webserver.yaml
