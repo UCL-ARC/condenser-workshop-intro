@@ -1,6 +1,6 @@
 # Deploying with Terraform
 
-To deploy a virtual machine with SSH and web ingress:
+To deploy a virtual machine:
 
 ``` sh
 git clone git@github.com:UCL-ARC/condenser-workshop-20260311.git
