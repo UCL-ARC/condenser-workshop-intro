@@ -126,7 +126,7 @@ terraform apply
 > yes
 ```
 
-You will be prompted for a name for the VM and the namespace to deploy it in.
+You will be prompted for a name for the VM and the namespace to deploy it in. Use the <WORKSHOP NAMESPACE> for the namespace, and any unique name for the VM.
 
 We can monitor the VM from the Harvester GUI. If we're quick, we can watch some of the boot process from the serial console.
 
