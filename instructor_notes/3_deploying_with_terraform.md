@@ -112,7 +112,13 @@ export KUBECONFIG=$PWD/sl-p02.yaml
 
 ### Apply this deployment
 
-Now run `terraform apply`:
+First run `terraform init` to initialise the terraform module and download the Harvester provider:
+
+``` sh
+terraform init
+```
+
+Now run `terraform validate` to check that the configuration is valid, and then `terraform apply` to deploy the VM:
 
 ``` sh
 terraform validate
