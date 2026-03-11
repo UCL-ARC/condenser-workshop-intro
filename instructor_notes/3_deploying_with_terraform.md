@@ -128,7 +128,7 @@ terraform apply
 > yes
 ```
 
-You will be prompted for a name for the VM and the namespace to deploy it in. Use the <WORKSHOP NAMESPACE> for the namespace, and any unique name for the VM.
+You will be prompted for a name for the VM and the namespace to deploy it in. Use the `<WORKSHOP NAMESPACE>` for the namespace, and any unique name for the VM.
 
 We can monitor the VM from the Harvester GUI. To do this, return to the [Rancher GUI](https://rancher.condenser.arc.ucl.ac.uk/) and navigate to `Virtualization Management > sl-p02 > Virtual Machines`. Click on the name of your VM to view its details. You can see the status of the VM, and if you click on the `Console` dropdown you can view the serial console output.
 
