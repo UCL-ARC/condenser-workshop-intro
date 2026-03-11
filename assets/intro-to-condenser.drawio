@@ -4,6 +4,9 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="ndCel2ueemAM6t5VqmKD-1" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="40" y="20" width="480" height="300" as="geometry" />
+        </mxCell>
         <mxCell id="JeHYvqVWmPxEYBTQZuyI-1" value="Condenser" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=bottom;align=center;spacingLeft=5;labelPosition=center;verticalLabelPosition=top;" parent="1" vertex="1">
           <mxGeometry x="40" y="40" width="480" height="280" as="geometry" />
         </mxCell>
@@ -36,6 +39,9 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="ECdt50f3mgDnhqwflZRb-1" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="40" y="20" width="640" height="360" as="geometry" />
+        </mxCell>
         <mxCell id="acpENWVnG6M4J1cL5qwc-1" value="Tenant" style="rounded=0;whiteSpace=wrap;html=1;labelPosition=center;verticalLabelPosition=top;align=center;verticalAlign=bottom;" parent="1" vertex="1">
           <mxGeometry x="40" y="40" width="480" height="340" as="geometry" />
         </mxCell>
@@ -140,6 +146,9 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="eoNLLC1hpcCEjuapBWH2-1" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="10" y="20" width="570" height="290" as="geometry" />
+        </mxCell>
         <mxCell id="cMBc9Uv5iRxQQUOLtjzP-15" value="UCL Network" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;align=center;labelPosition=center;verticalLabelPosition=top;verticalAlign=bottom;" parent="1" vertex="1">
           <mxGeometry x="10" y="40" width="565" height="270" as="geometry" />
         </mxCell>
@@ -185,6 +194,9 @@
       <root>
         <mxCell id="BmTG95v-jI1gWFVh6aOs-0" />
         <mxCell id="BmTG95v-jI1gWFVh6aOs-1" parent="BmTG95v-jI1gWFVh6aOs-0" />
+        <mxCell id="oldDtHL0rgCH2XMvtw1O-0" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=none;" vertex="1" parent="BmTG95v-jI1gWFVh6aOs-1">
+          <mxGeometry x="10" y="20" width="570" height="290" as="geometry" />
+        </mxCell>
         <mxCell id="BmTG95v-jI1gWFVh6aOs-2" value="UCL Network" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;align=center;labelPosition=center;verticalLabelPosition=top;verticalAlign=bottom;" parent="BmTG95v-jI1gWFVh6aOs-1" vertex="1">
           <mxGeometry x="10" y="40" width="565" height="270" as="geometry" />
         </mxCell>
