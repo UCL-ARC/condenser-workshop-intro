@@ -53,3 +53,5 @@ kubectl --namespace=<WORKSHOP NAMESPACE> edit vm <NAME>
 ``` sh
 kubectl delete -f webserver.yaml
 ```
+
+[Section 3: Deploying with Terraform](./3_deploying_with_terraform.md) | [Home](../README.md) | [Section 5: Working on Condenser](./5_working_on_condenser.md)

@@ -126,3 +126,5 @@ ssh -J condenser -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null alm
 ## Change VM state
 
 You may have already restarted your VM. You can use various actions to stop and restart your VM. When you are finished, delete it.
+
+[Section 1: Introduction to the platform](./1_Intro_to_the_platform.md) | [Home](../README.md) | [Section 3: Deploying with Terraform](./3_deploying_with_terraform.md)

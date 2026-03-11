@@ -33,3 +33,5 @@ Every project has one or more namespaces, and each namespace has a resource quot
 One example of a resource is a VLAN network. This is required to expose a VM by SSH or to the web. Projects are automatically provisioned with one; you can see the networks for your namespaces under `Networks > Virtual Machine Networks`. You will not be able to modify this resource in Harvester.
 
 The resources you will interact with most often are images, volumes, and virtual machines. You can monitor them from the menu at left.
+
+[Home](../README.md) | [Section 2: Deploying with the web GUI](./2_deploying_with_the_GUI.md)
