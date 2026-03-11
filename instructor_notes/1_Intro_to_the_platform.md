@@ -14,7 +14,9 @@ Some of you may see two clusters listed; `sl-p02` and `sl-g02`. The `sl-p02` clu
 
 ## Structure of the platform
 
-Condenser consists of several Harvester clusters; we have already referenced `sl-p02` and `sl-g02`, but there are others (and more on the way). Under the hood, a Harvester cluster is a kubernetes cluster. Several tools are installed on the cluster so that it can interface with Rancher and make the underlying hardware available to tenants as virtual machines and other resources. In this workshop we'll show you how to work with the `sl-p02` cluster in three different ways: from this GUI, with Terraform, and with `kubectl`.
+Condenser consists of several Harvester clusters; we have already referenced `sl-p02` and `sl-g02`, but there are others (and more on the way). Under the hood, a Harvester cluster is a kubernetes cluster. Several tools are installed on the cluster so that it can interface with Rancher and make the underlying hardware available to tenants as virtual machines, as well as provide other resources.
+
+In this workshop we'll show you how to work with the `sl-p02` cluster in three different ways: from this GUI, with Terraform, and with `kubectl`.
 
 ## Tenant resources
 
