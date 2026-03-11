@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# Export the diagrams as SVG for the MacOS draw.io app
+for page in 0 1 2 3; do
+/Applications/draw.io.app/Contents/MacOS/draw.io --export --format svg --border 10 -p $page -o intro-to-condenser-$page.svg intro-to-condenser.drawio
+done

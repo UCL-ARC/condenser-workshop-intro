@@ -95,6 +95,8 @@ We can apply this deployment as-is. But first we need a kubeconfig file to authe
 
 We are going to download our kubeconfig file, which Harvester requires to connect to the `sl-p02` cluster in Condenser.
 
+![Diagram of connecting with kubeconfig](../assets/intro-to-condenser-3.svg)
+
 To do so, return to the [Rancher GUI](https://rancher.condenser.arc.ucl.ac.uk/) in your web browser. Using the menu at left, go to **Virtualization Management**, and tick the box next to the cluster you need to authenticate to. For this workshop, we need `sl-p02`. Then click on **Download KubeConfig**. Take note of the location that your browser downloads the file to. Use your favorite method to move it to a handy location, such as the directory you've been working in.
 
 ``` sh
@@ -126,7 +128,7 @@ terraform apply
 > yes
 ```
 
-You will be prompted for a name for the VM and the namespace to deploy it in. Use the <WORKSHOP NAMESPACE> for the namespace, and any unique name for the VM.
+You will be prompted for a name for the VM and the namespace to deploy it in. Use the `<WORKSHOP NAMESPACE>` for the namespace, and any unique name for the VM.
 
 We can monitor the VM from the Harvester GUI. To do this, return to the [Rancher GUI](https://rancher.condenser.arc.ucl.ac.uk/) and navigate to `Virtualization Management > sl-p02 > Virtual Machines`. Click on the name of your VM to view its details. You can see the status of the VM, and if you click on the `Console` dropdown you can view the serial console output.
 

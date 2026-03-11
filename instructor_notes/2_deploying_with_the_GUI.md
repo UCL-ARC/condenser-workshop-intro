@@ -40,7 +40,10 @@ Click create and wait for your VM to start. After about a minute your VM will be
 
 SSH access to VMs on Condenser is restricted by the SSH bastion at <ssh.condenser.ucl.ac.uk>.
 
-> [!NOTE] Logging in to any virtual machine on Condenser actually requires two SSH keys; a key that is installed on the VM and a key that is registered with the SSH bastion. For this exercise, these keys are the same.
+> [!NOTE]
+> Logging in to any virtual machine on Condenser actually requires two SSH keys; a key that is installed on the VM and a key that is registered with the SSH bastion. For this exercise, these keys are the same.
+
+![Diagram of SSH access](../assets/intro-to-condenser-2.svg)
 
 ### Register your SSH key with the SSH bastion
 
