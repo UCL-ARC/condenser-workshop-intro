@@ -23,3 +23,5 @@ Use [this form in MyServices](https://io.uk.xurrent.com/cnQ9NDU1Mg) to describe 
 #### [kubernetes](https://kubernetes.io/docs/home/)
 
 #### [Kubevirt](https://kubevirt.io/user-guide/)
+
+[Section 4: Deploying with kubectl](./4_deploying_with_kubectl.md) | [Home](../README.md)

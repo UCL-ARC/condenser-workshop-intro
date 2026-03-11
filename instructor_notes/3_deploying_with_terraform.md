@@ -319,3 +319,5 @@ terraform destroy
 
 > [!WARNING]
 > By default, Terraform state files are stored in plain text with no encryption. If you retrieve a secret from elsewhere and then use it in the module, it may be recorded in the state file. Hashicorp has written advice for [managing sensitive data in your Terraform configuration](https://developer.hashicorp.com/terraform/language/manage-sensitive-data).
+
+[Section 2: Deploying with the web GUI](./2_deploying_with_the_GUI.md) | [Home](../README.md) | [Section 4: Deploying with kubectl](./4_deploying_with_kubectl.md)
