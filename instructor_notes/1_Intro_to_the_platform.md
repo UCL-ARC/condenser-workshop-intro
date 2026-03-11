@@ -16,11 +16,15 @@ Some of you may see two clusters listed; `sl-p02` and `sl-g02`. The `sl-p02` clu
 
 Condenser consists of several Harvester clusters; we have already referenced `sl-p02` and `sl-g02`, but there are others (and more on the way). Under the hood, a Harvester cluster is a kubernetes cluster. Several tools are installed on the cluster so that it can interface with Rancher and make the underlying hardware available to tenants as virtual machines, as well as provide other resources.
 
+![Diagram of the platform](../assets/intro-do-condenser-0.svg)
+
 In this workshop we'll show you how to work with the `sl-p02` cluster in three different ways: from this GUI, with Terraform, and with `kubectl`.
 
 ## Tenant resources
 
 Workloads on Condenser are organised into tenants. Each tenant can have any number of projects on different clusters. Every tenant has an owner and users with permission to create and manage resources within the tenant's projects. Tenants are isolated from eachother, but users in the same tenancy can see and manage each others' resources within the tenant's projects.
+
+![Diagram of a tenant](../assets/intro-do-condenser-1.svg)
 
 ## Managing your resources
 

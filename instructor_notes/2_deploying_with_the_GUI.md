@@ -42,6 +42,8 @@ SSH access to VMs on Condenser is restricted by the SSH bastion at <ssh.condense
 
 > [!NOTE] Logging in to any virtual machine on Condenser actually requires two SSH keys; a key that is installed on the VM and a key that is registered with the SSH bastion. For this exercise, these keys are the same.
 
+![Diagram of SSH access](../assets/intro-do-condenser-2.svg)
+
 ### Register your SSH key with the SSH bastion
 
 In your browser, log in to the [SSH bastion](https://ssh.condenser.arc.ucl.ac.uk/).
