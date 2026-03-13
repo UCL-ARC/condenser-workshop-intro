@@ -10,7 +10,10 @@ This section requires an SSH key. If you do not have one, you can create one wit
 
 Navigate to: `Advanced > SSH Keys` and click **Create**.
 
-Create a key resource in the `arc-devops-ns` namespace. Give it a unique name and furnish it with your public key data. If the form does not work, you can use the YAML format.
+Create a key resource in the `arc-devops-ns` namespace. Give it a unique name and furnish it with your public key data.
+
+> [!NOTE]
+> If the web UI does not permit you to select the correct namespace when creating resources, filter namespaces and select the workshop namespace using the filter box in the upper right of the UI.
 
 ## Launch a VM
 
