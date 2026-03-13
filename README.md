@@ -13,6 +13,20 @@ By the end of the workshop, learners will...
 - Be equipped with a re-usable pattern for a VM deployment
 - Be informed on how to learn more about the platform and how to apply for resources to create further projects
 
+## Recommended schedule
+
+| Start time | Section |
+| ---------- | ------- |
+| 00:00 | Section 1: Introduction to the platform |
+| 00:30 | Section 2: Deploying with the web GUI |
+| 01:00 | Break |
+| 01:10 | Section 3: Deploying with Terraform |
+| 02:25 | Break |
+| 02:35 | Section 4: Deploying with kubectl |
+| 03:05 | Section 5: Working on Condenser |
+| 03:15 | Q&A and buffer time |
+| 03:30 | Finish |
+
 ## Prerequisites
 
 This workshop will consist of practical demonstrations of managing deployments of virtual infrastructure through a web GUI, the command line, and by connecting to remote servers with SSH. It is intended that learners will follow along with the workshop from their own workstations, either remotely over Teams or in-person.
