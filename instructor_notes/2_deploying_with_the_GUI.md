@@ -54,11 +54,7 @@ In your browser, log in to the [SSH bastion](https://ssh.condenser.arc.ucl.ac.uk
 
 Click on SSH Keys, then Upload your key. Enter the SSH public key data.
 
-Then click on SSH Certificates. Sign a certificate and then follow the instructions to install it. Please be careful to check that:
-
-- You have signed the correct key
-- The key and cert files are in the correct locations
-- The key and cert files have the correct permissions
+Then click on SSH Certificates. Sign a certificate and then follow the instructions to install it.
 
 You can test that your key is properly configured and signed with the following command:
 
@@ -126,7 +122,7 @@ Then to do the same test you would use:
 ssh condenser
 ```
 
-To simplify subsequent SSH commands, we will assume that you have configured this SSH host.
+To simplify subsequent SSH commands, we will assume that you have configured the `condenser` SSH host as above.
 
 ### Log in to your VM by jumping through the bastion
 
@@ -135,6 +131,12 @@ Return to the Harvester GUI and check your VM's IP address. If your VM does not 
 ``` sh
 ssh -J condenser -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null almalinux@<IP ADDRESS>
 ```
+
+This command does several things:
+
+- Uses the `-J condenser` option to use the `condenser` host as a jump host
+- Configures the `-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null` options. In general, it is not advisable to configure these options this way because host key checking is a security feature that prevents you from accessing a host if the host key changes. However because we will destroy and create this virtual machine several times the host key will certainly change. If your VM is assigned the same IP address on subsequent creations these options will ensure that you are not prevented from accessing it.
+- Logs in to your virtual machine using the address `almalinux@<IP ADDRESS>`. Because this is an AlmaLinux VM the default username is `almalinux`. If you use a different operating system the default username will be different.
 
 ## Change VM state
 
