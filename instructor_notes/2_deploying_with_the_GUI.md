@@ -10,10 +10,10 @@ This section requires an SSH key. If you do not have one, you can create one wit
 
 Navigate to: `Advanced > SSH Keys` and click **Create**.
 
-Create a key resource in the `arc-devops-ns` namespace. Give it a unique name and furnish it with your public key data.
+Create a key resource in the workshop namespace. Give it a unique name and furnish it with your public key data.
 
 > [!NOTE]
-> If the web UI does not permit you to select the correct namespace when creating resources, filter namespaces and select the workshop namespace using the filter box in the upper right of the UI.
+> If the web UI does not permit you to select the correct namespace when creating resources, use the filter box in the top-right corner of the UI to filter for the workshop namespace before attempting to create any resources.
 
 ## Launch a VM
 
@@ -21,21 +21,21 @@ There are many configuration options for launching a VM. Here we will only call 
 
 Navigate to the Virtual Machines tab. Click Create to get started.
 
-Create the VM in the `arc-devops-ns` namespace and give it a unique name.
+Create the VM in the workshop namespace and give it a unique name. Then set the following parameters in the Basics, Volumes, and Networks tabs.
 
 In the Basics tab:
 
-- CPU: 1
-- Memory: 8
-- SSHKey: the key you registered in the previous step
+- CPU: `1`
+- Memory: `8`
+- SSHKey: Select the key that you registered in the previous step
 
 In the Volumes tab:
 
-- Image: harvester-public/almalinux-10-generic
+- Image: `harvester-public/almalinux-10-generic`
 
 In the Networks tab:
 
-- Network: arc-devops-ns/default
+- Network: `<WORKSHOP NAMESPACE>/default`
 
 Click create and wait for your VM to start. After about a minute your VM will be assigned an IP address.
 
@@ -102,6 +102,14 @@ This system can only be used as a Jump (-J) or ProxyCommand host.
 cloud-user@ssh.condenser.arc.ucl.ac.uk: Permission denied (publickey,gssapi-keyex,gssapi-with-mic).
 ```
 
+If you recieve any message other than `Connection... closed.` when you attempt to connect by SSH, please check that:
+
+- You are on the UCL network, either on campus or using the VPN
+- You have registered your key with the SSH bastion
+- You have installed the certificate file
+- The file permissions on your SSH key files are sufficiently secure
+- The key and the certificate are installed in the default location `~/.ssh`
+
 You can record this host in your SSH config with the following entry:
 
 ``` ssh
@@ -118,6 +126,8 @@ Then to do the same test you would use:
 ssh condenser
 ```
 
+To simplify subsequent SSH commands, we will assume that you have configured this SSH host.
+
 ### Log in to your VM by jumping through the bastion
 
 Return to the Harvester GUI and check your VM's IP address. If your VM does not show an IP address, perform a soft restart action on it and wait for it to come back online. Then you can log in like so:
@@ -129,5 +139,7 @@ ssh -J condenser -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null alm
 ## Change VM state
 
 You may have already restarted your VM. You can use various actions to stop and restart your VM. When you are finished, delete it.
+
+When you created the VM, a volume was automatically created to provide the VM's disk. This should automatically be deleted when you delete the VM.
 
 [Section 1: Introduction to the platform](./1_Intro_to_the_platform.md) | [Home](../README.md) | [Section 3: Deploying with Terraform](./3_deploying_with_terraform.md)
