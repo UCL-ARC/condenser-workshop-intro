@@ -1,5 +1,7 @@
 # Deploying with Terraform
 
+We will deploy a virtual machine with the same functionality as in the previous section using Terraform instead of the web GUI.
+
 ## Write a terraform module
 
 Create a new, empty directory and three empty files:
