@@ -125,6 +125,7 @@ Now run `terraform validate` to check that the configuration is valid, and then 
 ``` sh
 terraform validate
 terraform apply
+...
 > yes
 ```
 
@@ -138,6 +139,7 @@ However, this VM is not configured to expose a GUI of its own, nor is it configu
 
 ``` sh
 terraform destroy
+...
 > yes
 ```
 
@@ -209,7 +211,7 @@ The VM will be assigned an IP address by DHCP. This output will retrieve that IP
 Before we apply, we can use a `tfvars` file to record variable values instead of entering them when prompted. Create a new file named `terraform.tfvars` and populate it with the following data:
 
 ``` hcl
-vm_name                = "<UNIQUE VM NAME>"
+vm_name             = "<UNIQUE VM NAME>"
 namespace           = "<WORKSHOP NAMESPACE>"
 network_name        = "<WORKSHOP NAMESPACE>/default"
 ssh_public_key_data = "<SSH PUBLIC KEY DATA>"
@@ -223,6 +225,7 @@ Then deploy the configuration:
 ``` sh
 terraform validate
 terraform apply
+...
 > yes
 ```
 
@@ -239,6 +242,7 @@ ssh -J condenser -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null alm
 
 ``` sh
 terraform destroy
+...
 > yes
 ```
 
@@ -279,6 +283,7 @@ Deploy the configuration:
 ``` sh
 terraform validate
 terraform apply
+...
 > yes
 ```
 
@@ -302,7 +307,7 @@ Lastly, we will demonstrate that some changes can be unintentionally destructive
 
 ## Back up deployment yaml files for the kubectl section
 
-Finally, we are going to prepare for the next section by backing up the yaml files associated with this VM. Return to the [Rancher GUI](rancher.condenser.arc.ucl.ac.uk/) and navigate to your virtual machine. From the rain (overflow) menu in the upper right select **Download YAML**, and note the location where your browser downloads the file to. Use your favorite method to move it to a convenient location and re-name it to `webserver.yaml`.
+Finally, we are going to prepare for the next section by backing up the YAML files associated with this VM. Return to the [Rancher GUI](rancher.condenser.arc.ucl.ac.uk/) and navigate to your virtual machine. From the rain (overflow) menu in the upper right select **Download YAML**, and note the location where your browser downloads the file. Use your favorite method to move it to a convenient location and re-name it to `webserver.yaml`.
 
 ``` sh
 mv ~/Downloads/<VM NAME>.yaml ./webserver.yaml
@@ -314,6 +319,7 @@ Finally, destroy your webserver:
 
 ``` sh
 terraform destroy
+...
 > yes
 ```
 
