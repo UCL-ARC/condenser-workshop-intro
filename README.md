@@ -1,6 +1,4 @@
-# condenser-workshop-20260311
-
-Material for Introduction to Condenser workshop on 20260311
+# Introduction to Condenser
 
 ## Goals of the workshop
 
@@ -10,7 +8,7 @@ By the end of the workshop, learners will...
 
 - Have created deployments of virtual infrastructure on the Condenser platform
 - Have modified and administered their own virtual resources
-- Be equipped with a re-usable pattern for a VM deployment
+- Have practiced Infrastructure-as-Code methods
 - Be informed on how to learn more about the platform and how to apply for resources to create further projects
 
 This workshop will consist of practical demonstrations of managing deployments of virtual infrastructure through a web GUI, the command line, and by connecting to remote servers with SSH. It is intended that learners will follow along with the workshop from their own workstations, either remotely over Teams or in-person.
