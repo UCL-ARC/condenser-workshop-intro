@@ -10,7 +10,7 @@ Log in to the platform at <https://rancher.condenser.arc.ucl.ac.uk>.
 
 Rancher governs access to the platform and controls your role and the permissions you have. But the dashboard is not very informative for our purposes. Click on **Virtualization Management** to see a list of clusters that you have access to.
 
-Some of you may see two clusters listed; `sl-p02` and `sl-g02`. The `sl-p02` cluster is for CPU workloads while the `sl-g02` is for GPU workloads. For this workshop we'll be using `sl-p02`. Click on `sl-p02` to view the Harvester dashboard for this cluster.
+Some of you may see two clusters listed; `sl-p02` and `sl-g02`. The `sl-p02` cluster is for CPU workloads while the `sl-g02` cluster is for workloads requiring GPUs. For this workshop we'll be using `sl-p02`. Click on `sl-p02` to view the Harvester dashboard for this cluster.
 
 ## Structure of the platform
 
