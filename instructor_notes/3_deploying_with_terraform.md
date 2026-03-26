@@ -1,5 +1,7 @@
 # Deploying with Terraform
 
+We will deploy a virtual machine with the same functionality as in the previous section using Terraform instead of the web GUI.
+
 ## Write a terraform module
 
 Create a new, empty directory and three empty files:
@@ -125,6 +127,7 @@ Now run `terraform validate` to check that the configuration is valid, and then 
 ``` sh
 terraform validate
 terraform apply
+...
 > yes
 ```
 
@@ -138,6 +141,7 @@ However, this VM is not configured to expose a GUI of its own, nor is it configu
 
 ``` sh
 terraform destroy
+...
 > yes
 ```
 
@@ -209,7 +213,7 @@ The VM will be assigned an IP address by DHCP. This output will retrieve that IP
 Before we apply, we can use a `tfvars` file to record variable values instead of entering them when prompted. Create a new file named `terraform.tfvars` and populate it with the following data:
 
 ``` hcl
-vm_name                = "<UNIQUE VM NAME>"
+vm_name             = "<UNIQUE VM NAME>"
 namespace           = "<WORKSHOP NAMESPACE>"
 network_name        = "<WORKSHOP NAMESPACE>/default"
 ssh_public_key_data = "<SSH PUBLIC KEY DATA>"
@@ -223,6 +227,7 @@ Then deploy the configuration:
 ``` sh
 terraform validate
 terraform apply
+...
 > yes
 ```
 
@@ -239,6 +244,7 @@ ssh -J condenser -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null alm
 
 ``` sh
 terraform destroy
+...
 > yes
 ```
 
@@ -279,10 +285,14 @@ Deploy the configuration:
 ``` sh
 terraform validate
 terraform apply
+...
 > yes
 ```
 
 Wait a few minutes, then check `https://<VM NAME>.<WORKSHOP PROJECT>.condenser.arc.ucl.ac.uk`.
+
+> [!NOTE]
+> Typically, the name of the `<WORKSHOP PROJECT>` will be the same as the `<WORKSHOP NAMESPACE>` with the characters `-ns` trimmed off the end.
 
 ## Using Terraform to enforce state
 
@@ -292,17 +302,17 @@ Lets return to the [Rancher GUI](https://rancher.condenser.arc.ucl.ac.uk/) and m
 
 Navigate to: `Virtualization management > sl-p02 > Virtual Machines`
 
-Click on your VM's name. Use the rain (overflow) menu in the upper right to **Edit Config**. Increase the RAM and save the changes. Your VM will need to restart for these to take effect.
+Click on your VM's name. Use the menu in the upper right (⋮) to **Edit Config**. Increase the RAM and save the changes. Your VM will need to restart for these to take effect.
 
 After the changes are complete, return to the command line and run `terraform plan`. Terraform will detect that there have been changes to the VM and it will give you a plan to enforce the state specified in your deployment. You can then run `terraform apply` to make the planned changes and return the VM to its correct configuration.
 
-If instead you wanted the change to be permanent, you can make the change in your terraform module and then `apply` it. This is a typical workflow for projects where multiple developers need to work on the infrastructure.
+If instead you wanted the change to be permanent, you can make the change in your terraform module and then `apply` it. This is a typical workflow for projects where multiple developers need to work on the infrastructure. Modifications to Infrastructure-as-Code deployments can be audited by a version control system such as Git, enabling collaboration.
 
-Lastly, we will demonstrate that some changes can be unintentionally destructive. Edit your `terraform.tfvars` file and change the name of the VM, then run `terraform plan`. Note that this change will force replacement of the VM.
+Lastly, we will demonstrate that some changes can be unintentionally destructive. Edit your `terraform.tfvars` file and change the name of the VM, then run `terraform plan`. Note that this change will force replacement of the VM. In a version-controlled scenario, a plan that destroys resources should be rejected or challenged to ensure that this is truly the intended effect.
 
-## Back up deployment yaml files for the kubectl section
+## Back up deployment YAML files for the kubectl section
 
-Finally, we are going to prepare for the next section by backing up the yaml files associated with this VM. Return to the [Rancher GUI](rancher.condenser.arc.ucl.ac.uk/) and navigate to your virtual machine. From the rain (overflow) menu in the upper right select **Download YAML**, and note the location where your browser downloads the file to. Use your favorite method to move it to a convenient location and re-name it to `webserver.yaml`.
+Finally, we are going to prepare for the next section by backing up the YAML files associated with this VM. Return to the [Rancher GUI](rancher.condenser.arc.ucl.ac.uk/) and navigate to your virtual machine. From the menu in the upper right (⋮) select **Download YAML**, and note the location where your browser downloads the file. Use your favorite method to move it to a convenient location and re-name it to `webserver.yaml`.
 
 ``` sh
 mv ~/Downloads/<VM NAME>.yaml ./webserver.yaml
@@ -314,6 +324,7 @@ Finally, destroy your webserver:
 
 ``` sh
 terraform destroy
+...
 > yes
 ```
 

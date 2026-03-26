@@ -1,73 +1,43 @@
-# condenser-workshop-20260311
-
-Material for Introduction to Condenser workshop on 20260311
+# Introduction to Condenser
 
 ## Goals of the workshop
 
-This workshop is designed for ARC RIDs, RSEs, and Data Stewards with experience installing, configuring, or administering reseach software on Linux systems.
+This workshop is designed for developers who are new to Condenser. Developers may have experience installing, configuring, or administering reseach software on Linux systems.
 
 By the end of the workshop, learners will...
 
 - Have created deployments of virtual infrastructure on the Condenser platform
 - Have modified and administered their own virtual resources
-- Be equipped with a re-usable pattern for a VM deployment
+- Have practiced Infrastructure-as-Code methods
 - Be informed on how to learn more about the platform and how to apply for resources to create further projects
-
-## Recommended schedule
-
-| Start time | Section |
-| ---------- | ------- |
-| 00:00 | Section 1: Introduction to the platform |
-| 00:30 | Section 2: Deploying with the web GUI |
-| 01:00 | Break |
-| 01:10 | Section 3: Deploying with Terraform |
-| 02:25 | Break |
-| 02:35 | Section 4: Deploying with kubectl |
-| 03:05 | Section 5: Working on Condenser |
-| 03:15 | Q&A and buffer time |
-| 03:30 | Finish |
-
-## Prerequisites
 
 This workshop will consist of practical demonstrations of managing deployments of virtual infrastructure through a web GUI, the command line, and by connecting to remote servers with SSH. It is intended that learners will follow along with the workshop from their own workstations, either remotely over Teams or in-person.
 
-Learners with Linux and MacOS computers can use their native command line applications. Learners with Windows computers can use a linux environment such as WSL or an IDE with a linux command line function such as Visual Studio Code.
+Self-guided learners are advised to read this page, then work through the exercises starting from the [Introduction](./instructor_notes/1_Intro_to_the_platform.md).
+
+Instructors are advised to read the [Advice for instructors](./instructor_notes/README.md).
+
+## Prerequisites
 
 ### Knowledge/experience
 
 - Linux command line
 - Using and configuring an SSH client
 
+### Equipment
+
+Learners with Linux and MacOS computers can use their native command line applications. Learners with Windows computers can use a linux environment such as WSL or an IDE with a linux command line function such as Visual Studio Code.
+
 ### Software
 
 - [Terraform](https://developer.hashicorp.com/terraform/install)
 - [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl)
-- An SSH client that can use certificates. Most modern operating systems, including Windows, are equipped with a suitable SSH client.
+- An SSH client that can use certificates. Most modern operating systems, including Windows 10+, are equipped with a suitable SSH client.
 
-## Before the workshop
+### Access to Condenser
 
-- Requests for the Environments team
-  - No disruptions on the cluster to be used for the workshop during the time scheduled
-  - That an Environments team member is available to help with PRs and TFC applies on the day, e.g. to add last-minute learners to the workshop tenant
-- Check that the tenant is suitable for hosting the workshop
-  - Resource quota per learner + instructor(s):
-    - 1 CPU
-    - 8 GB RAM
-    - 10 GB disk
-  - Web ingress must be enabled
-- Instructor needs to set up their workstation for teaching
-  - Ensure that they are in the tenant
-  - Revoke all current API keys in Rancher
-  - Remove any SSH key or VM resources they created in the workshop tenant
-  - Revoke and remove any SSH keys or certificates registered with Condenser's SSH bastion
-  - Back up and move SSH keys and config
-  - Clear old kubeconfig files out of the default download location
+Learners attending a taught workshop will be provided with instructions for gaining access to Condenser.
 
-## After the workshop
+Self-guided learners will need to be a member of a tenant. The tenant should have at least 1 vCPU, 8 GB RAM, and 10 GB storage to spare for the resources that will be created during the workshop. To do the web ingress exercise in [Section 3](./instructor_notes/3_deploying_with_terraform.md) requires that web ingress is enabled for the tenant.
 
-- Instructor should:
-  - Revoke API keys in Rancher created for the workshop
-  - Revoke and remove any SSH keys or certificates registered with Condenser's SSH bastion
-  - Remove any SSH key or VM resources they created in the workshop tenant
-  - Restore their SSH config
-- If desired, remove learners from the workshop tenant
+Throughout the instructor notes, references are made to the `<WORKSHOP NAMESPACE>` and `<WORKSHOP PROJECT>`. Tenant namespaces on Condenser are of the form `<PROJECT>-ns`. The workshop exercises can be run on any cluster, in any namespace on Condenser, so when you see these tags in the notes please replace them with a namespace and project that you have access to.
