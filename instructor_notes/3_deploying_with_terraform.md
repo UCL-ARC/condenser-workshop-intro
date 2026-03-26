@@ -291,6 +291,9 @@ terraform apply
 
 Wait a few minutes, then check `https://<VM NAME>.<WORKSHOP PROJECT>.condenser.arc.ucl.ac.uk`.
 
+> [!NOTE]
+> Typically, the name of the `<WORKSHOP PROJECT>` will be the same as the `<WORKSHOP NAMESPACE>` with the characters `-ns` trimmed off the end.
+
 ## Using Terraform to enforce state
 
 We are going to demonstrate the concept of "drift" and how Terraform can be used to enforce state.
