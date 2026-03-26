@@ -2,7 +2,7 @@
 
 We will deploy a virtual machine using the Harvester GUI. We will configure it for SSH access, and we will use Condenser's SSH bastion to log in to it.
 
-All of the following instructions begin from the [Harvester dashboard for `sl-p02`](https://rancher.condenser.arc.ucl.ac.uk/dashboard/harvester/c/c-b5dbc/harvesterhci.io.dashboard).
+All of these instructions begin from the Harvester dashboard for the workshop cluster. See the [previous section](./1_Intro_to_the_platform.md) to find the cluster dashboard.
 
 This section requires an SSH key. If you do not have one, you can create one with `ssh-keygen`.
 
@@ -14,6 +14,8 @@ Create a key resource in the workshop namespace. Give it a unique name and furni
 
 > [!NOTE]
 > If the web UI does not permit you to select the correct namespace when creating resources, use the filter box in the top-right corner of the UI to filter for the workshop namespace before attempting to create any resources.
+
+![A screenshot of the SSH Keys page highlighting the menu navigation and the namespace filter box](../assets/screenshot-3-ssh-keys.png)
 
 ## Launch a VM
 

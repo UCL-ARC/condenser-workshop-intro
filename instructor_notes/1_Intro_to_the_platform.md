@@ -12,6 +12,12 @@ Rancher governs access to the platform and controls your role and the permission
 
 Some of you may see two clusters listed; `sl-p02` and `sl-g02`. The `sl-p02` cluster is for CPU workloads while the `sl-g02` cluster is for workloads requiring GPUs. For this workshop we'll be using `sl-p02`. Click on `sl-p02` to view the Harvester dashboard for this cluster.
 
+![A screenshot of the Virtualization Management page](../assets/screenshot-0-dashboard.png)
+
+> [!NOTE]
+> You can use the menu at the top of the screen to set this page as your login page.
+> ![A screenshot of the login page menu](../assets/screenshot-1-login-setting.png)
+
 ## Structure of the platform
 
 Condenser consists of several Harvester clusters; we have already referenced `sl-p02` and `sl-g02`, but there are others (and more on the way). Under the hood, a Harvester cluster is a kubernetes cluster. Several tools are installed on the cluster so that it can interface with Rancher and make the underlying hardware available to tenants as virtual machines, as well as provide other resources.
@@ -31,6 +37,8 @@ Workloads on Condenser are organised into tenants. Each tenant can have any numb
 Every project has one or more namespaces, and each namespace has a resource quota that limits the amount of CPU, RAM, and storage that can be provisioned in the namespace. In other words, quota is assigned per namespace, not per user.
 
 One example of a resource is a VLAN network. This is required to expose a VM by SSH or to the web. Projects are automatically provisioned with one; you can see the networks for your namespaces under `Networks > Virtual Machine Networks`. You will not be able to modify this resource in Harvester.
+
+![A screenshot of the Virtual Machine Networks page](../assets/screenshot-2-networks.png)
 
 The resources you will interact with most often are images, volumes, and virtual machines. You can monitor them from the menu at left.
 
