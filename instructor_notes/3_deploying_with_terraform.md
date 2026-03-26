@@ -310,7 +310,7 @@ If instead you wanted the change to be permanent, you can make the change in you
 
 Lastly, we will demonstrate that some changes can be unintentionally destructive. Edit your `terraform.tfvars` file and change the name of the VM, then run `terraform plan`. Note that this change will force replacement of the VM. In a version-controlled scenario, a plan that destroys resources should be rejected or challenged to ensure that this is truly the intended effect.
 
-## Back up deployment yaml files for the kubectl section
+## Back up deployment YAML files for the kubectl section
 
 Finally, we are going to prepare for the next section by backing up the YAML files associated with this VM. Return to the [Rancher GUI](rancher.condenser.arc.ucl.ac.uk/) and navigate to your virtual machine. From the rain (overflow) menu in the upper right select **Download YAML**, and note the location where your browser downloads the file. Use your favorite method to move it to a convenient location and re-name it to `webserver.yaml`.
 

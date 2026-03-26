@@ -1,6 +1,6 @@
 # Deploying with `kubectl`
 
-## Inspect deployment yaml files
+## Inspect deployment YAML files
 
 Lets take a look at the YAML file we downloaded in the last section, using your favorite text editor. Identify some of the settings that we configured with Terraform.
 
