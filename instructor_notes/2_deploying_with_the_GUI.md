@@ -137,7 +137,7 @@ ssh -J condenser -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null alm
 This command does several things:
 
 - Uses the `-J condenser` option to use the `condenser` host as a jump host
-- Configures the `-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null` options. In general, it is not advisable to configure these options this way because host key checking is a security feature that prevents you from accessing a host if the host key changes. However because we will destroy and create this virtual machine several times the host key will certainly change. If your VM is assigned the same IP address on subsequent creations these options will ensure that you are not prevented from accessing it.
+- Configures the `-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null` options. In general, it is not advisable to configure these options this way because host key checking is a security feature that prevents you from accessing a host if the host key changes. However, because we will destroy and create this virtual machine several times the host key will certainly change. If your VM is assigned the same IP address on subsequent creations these options will ensure that you are not prevented from accessing it.
 - Logs in to your virtual machine using the address `almalinux@<IP ADDRESS>`. Because this is an AlmaLinux VM the default username is `almalinux`. If you use a different operating system the default username will be different.
 
 ## Change VM state
