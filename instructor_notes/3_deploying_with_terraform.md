@@ -306,9 +306,9 @@ Click on your VM's name. Use the rain (overflow) menu in the upper right to **Ed
 
 After the changes are complete, return to the command line and run `terraform plan`. Terraform will detect that there have been changes to the VM and it will give you a plan to enforce the state specified in your deployment. You can then run `terraform apply` to make the planned changes and return the VM to its correct configuration.
 
-If instead you wanted the change to be permanent, you can make the change in your terraform module and then `apply` it. This is a typical workflow for projects where multiple developers need to work on the infrastructure.
+If instead you wanted the change to be permanent, you can make the change in your terraform module and then `apply` it. This is a typical workflow for projects where multiple developers need to work on the infrastructure. Modifications to Infrastructure-as-Code deployments can be audited by a version control system such as Git, enabling collaboration.
 
-Lastly, we will demonstrate that some changes can be unintentionally destructive. Edit your `terraform.tfvars` file and change the name of the VM, then run `terraform plan`. Note that this change will force replacement of the VM.
+Lastly, we will demonstrate that some changes can be unintentionally destructive. Edit your `terraform.tfvars` file and change the name of the VM, then run `terraform plan`. Note that this change will force replacement of the VM. In a version-controlled scenario, a plan that destroys resources should be rejected or challenged to ensure that this is truly the intended effect.
 
 ## Back up deployment yaml files for the kubectl section
 
