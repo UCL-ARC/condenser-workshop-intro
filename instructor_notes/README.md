@@ -26,7 +26,7 @@ Notes for the instructor to follow during the workshop.
 
 - Requests for the Environments team
   - No disruptions on the cluster to be used for the workshop during the time scheduled
-  - That an Environments team member is available to help with PRs and TFC applies on the day, e.g. to add last-minute learners to the workshop tenant
+  - That an Environments team member is available to help with PRs and Terraform Cloud applies from the [arc-tf-aad-groups](https://github.com/UCL-ARC/arc-tf-aad-groups) repo on the day, e.g. to add last-minute learners to the workshop tenant
 - Check that the tenant is suitable for hosting the workshop
   - Resource quota per learner + instructor(s):
     - 1 CPU
