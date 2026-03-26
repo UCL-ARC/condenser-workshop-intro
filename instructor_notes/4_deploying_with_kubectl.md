@@ -2,7 +2,12 @@
 
 ## Inspect deployment YAML files
 
-Lets take a look at the YAML file we downloaded in the last section, using your favorite text editor. Identify some of the settings that we configured with Terraform.
+Lets take a look at the YAML file we downloaded in the last section, using your favorite text editor. Identify some of the settings that we previously configured with Terraform.
+
+- CPU and memory
+- VM name
+- Network
+- Cloud-init user data
 
 ## Apply the deployment
 
@@ -37,15 +42,15 @@ What about my VM?
 
 ``` sh
 kubectl --namespace=<WORKSHOP NAMESPACE> get all
-kubectl --namespace=<WORKSHOP NAMESPACE> get all | grep <NAME>
-kubectl --namespace=<WORKSHOP NAMESPACE> describe vm <NAME>
+kubectl --namespace=<WORKSHOP NAMESPACE> get all | grep <VM NAME>
+kubectl --namespace=<WORKSHOP NAMESPACE> describe vm <VM NAME>
 ```
 
 ## Use kubectl to modify the VM
 
 ``` sh
-kubectl --namespace=<WORKSHOP NAMESPACE> get -o yaml vm <NAME>
-kubectl --namespace=<WORKSHOP NAMESPACE> edit vm <NAME>
+kubectl --namespace=<WORKSHOP NAMESPACE> get -o yaml vm <VM NAME>
+kubectl --namespace=<WORKSHOP NAMESPACE> edit vm <VM NAME>
 ```
 
 ## Destroy the deployment
