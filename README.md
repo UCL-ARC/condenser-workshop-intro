@@ -15,6 +15,8 @@ This workshop will consist of practical demonstrations of managing deployments o
 
 Self-guided learners are advised to read this page, then work through the exercises starting from the [Introduction](./instructor_notes/1_Intro_to_the_platform.md).
 
+Instructors are advised to read the [Advice for instructors](./instructor_notes/README.md).
+
 ## Prerequisites
 
 ### Knowledge/experience
@@ -39,5 +41,3 @@ Learners attending a taught workshop will be provided with instructions for gain
 Self-guided learners will need to be a member of a tenant. The tenant should have at least 1 vCPU, 8 GB RAM, and 10 GB storage to spare for the resources that will be created during the workshop. To do the web ingress exercise in [Section 3](./instructor_notes/3_deploying_with_terraform.md) requires that web ingress is enabled for the tenant.
 
 Throughout the instructor notes, references are made to the `<WORKSHOP NAMESPACE>` and `<WORKSHOP PROJECT>`. Tenant namespaces on Condenser are of the form `<PROJECT>-ns`. The workshop exercises can be run on any cluster, in any namespace on Condenser, so when you see these tags in the notes please replace them with a namespace and project that you have access to.
-
-## [Advice for instructors](./instructor_notes/README.md)
