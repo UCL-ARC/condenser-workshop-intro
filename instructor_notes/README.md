@@ -38,8 +38,8 @@ Notes for the instructor to follow during the workshop.
   - Revoke all current API keys in Rancher
   - Remove any SSH key or VM resources they created in the workshop tenant
   - Revoke and remove any SSH keys or certificates registered with Condenser's SSH bastion
-  - Back up and move SSH keys and config
-  - Clear old kubeconfig files out of the default download location
+  - Back up and move their local `.ssh` directory
+  - Clear old kubeconfig files out of the default download location for their browser
 
 ## After the workshop
 
