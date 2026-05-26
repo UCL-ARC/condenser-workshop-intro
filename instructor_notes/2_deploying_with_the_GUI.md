@@ -61,7 +61,7 @@ Then click on SSH Certificates. Sign a certificate and then follow the instructi
 You can test that your key is properly configured and signed with the following command:
 
 ``` sh
-ssh -i ~/.ssh/id_ed25519 -o CertificateFile=~/.ssh/id_arc.signed cloud-user@ssh.condenser.arc.ucl.ac.uk
+ssh -i ~/.ssh/id_ed25519 -o CertificateFile=~/.ssh/id_condenser.signed cloud-user@ssh.condenser.arc.ucl.ac.uk
 ```
 
 If your key and certificate are correctly set up the server will simply close the connection:
@@ -114,7 +114,7 @@ You can record this host in your SSH config with the following entry:
 Host condenser
   HostName ssh.condenser.arc.ucl.ac.uk
   User cloud-user
-  CertificateFile ~/.ssh/id_arc.signed
+  CertificateFile ~/.ssh/id_condenser.signed
   IdentityFile ~/.ssh/id_ed25519
 ```
 
